@@ -25,6 +25,7 @@ int calculateSubsetNumber(vector<int>& set, vector<int>& subset){
     return number;
 }
 
+// bit.ly/3Pni6Mb
 
 // funcao para gerar um subconjunto a partir de um numeroespecifico
 vector<int> generateSubsetFromNumber(vector<int>& set, int number){
@@ -85,8 +86,8 @@ std::vector<int> generateNextSubset(const std::vector<int>& set, const std::vect
 }
 
 int main() {
-    std::vector<int> set = {1, 2, 3, 4, 5};
-    std::vector<int> subset = {2, 4, 5};
+    std::vector<int> set = {1, 2, 3, 4};
+    std::vector<int> subset = {1,2,3};
 
     // 1. Calcular o número de um subconjunto especificado
     int number = calculateSubsetNumber(set, subset);
