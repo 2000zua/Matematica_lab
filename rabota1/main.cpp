@@ -86,8 +86,37 @@ std::vector<int> generateNextSubset(const std::vector<int>& set, const std::vect
 }
 
 int main() {
-    std::vector<int> set = {1, 2, 3, 4};
-    std::vector<int> subset = {1,2,3};
+    std::vector<int> set = vector<int>();
+    std::vector<int> subset = vector<int>();
+
+    bool run = true;
+    while (run)
+    {
+        int InputData;
+        int setController;
+        cout << "How elemento will add in conjunto set: "<<endl;
+        cin >> setController;
+
+        for (int i = 0; i < setController; i++)
+        {
+            cout <<"Digite the element "<<i<<": "<<endl;
+            cin >> InputData;
+            set.push_back(InputData);
+        }
+
+        cout << "How elemento will add in conjunto Subset: "<<endl;
+        cin >> setController;
+
+        for (int i = 0; i < setController; i++)
+        {
+            cout <<"Digite the element "<<i<<": "<<endl;
+            cin >> InputData;
+            subset.push_back(InputData);
+        }
+
+        run = false;
+    }
+    
 
     // 1. Calcular o número de um subconjunto especificado
     int number = calculateSubsetNumber(set, subset);
