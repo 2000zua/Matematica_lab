@@ -94,7 +94,7 @@ int main() {
     {
         int InputData;
         int setController;
-        cout << "How elemento will add in conjunto set: "<<endl;
+        cout << "How elements will add in conjunt set [A]: "<<endl;
         cin >> setController;
 
         for (int i = 0; i < setController; i++)
@@ -104,7 +104,7 @@ int main() {
             set.push_back(InputData);
         }
 
-        cout << "How elemento will add in conjunto Subset: "<<endl;
+        cout << "How elements will add in conjunt Subset [B]: "<<endl;
         cin >> setController;
 
         for (int i = 0; i < setController; i++)

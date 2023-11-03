@@ -3,39 +3,45 @@
 
 using namespace std;
 
-void generateSubsets(int n){
-    vector<int> subset;
-    for (int i = 0; i < (1 << n); i++)
+void generateGrayCode(vector<string>& grayCode, int n){
+
+    if (n <= 0)
     {
-        subset.clear();
-        for (int j = 0; j < n; j++)
-        {
-            if (i & (1 << j))
-            {
-                subset.push_back(j+1);
-            }
-        }
-        cout << "{";
-        for (int j = 0; i < subset.size(); j++)
-        {
-            cout << subset[j];
-            if (j < subset.size() -1)
-            {
-                cout << ", ";
-            }
-        }
-        cout << "}"<<endl;
-        
-        
+        grayCode.push_back(" ");
+        return;
     }
+
+    generateGrayCode(grayCode,(n-1));
+    
+    for (int i = grayCode.size()-1; i>= 0; i--)
+    {
+        string mirrored = grayCode[i];
+        mirrored += mirrored+"1";
+        grayCode.push_back(mirrored);
+    }
+    for (int i =0; i < grayCode.size()/2; i++)
+    {
+        swap(grayCode[i], grayCode[grayCode.size()-1-i]);
+    }
+    
     
 }
 
 int main(int argc, char const *argv[])
 {
+    vector<string> subset;
     int n;
     cout << "Input [n]: ";
     cin >>n;
-    generateSubsets(n);
+
+    generateGrayCode(subset, n);
+
+    cout << "Generate:"<<endl;;
+
+    for (const string& code : subset)
+    {
+        cout << code<<endl;
+    }
+    
     return 0;
 }
