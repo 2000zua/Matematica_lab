@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 vector<int> generateGrayCode(int n){
     vector<int> grayCode;
     for (int i = 0; i < (1 << n); i++)
@@ -16,6 +17,7 @@ vector<int> generateGrayCode(int n){
 
 int main(int argc, char const *argv[])
 {
+    string linha = "";
     int n;
     bool run = true;
     while (run)
@@ -31,9 +33,12 @@ int main(int argc, char const *argv[])
         {
             for (int code : grayCode)
             {
+                cout <<"--> "<<code<<endl;
                 for (int i =n-1; i >= 0; i--)
                 {
+                    
                     cout << ((code >> i) & 1)<<" ";
+
                 }
                 cout <<endl;
                 
