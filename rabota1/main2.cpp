@@ -3,7 +3,8 @@
 
 using namespace std;
 
-void generateSubsets(vector<int>& subset, int k, int n){
+void generateSubsets(int k, int n){
+    vector<int> subset;
     if (k == (n+1))
     {
         for (int i = 0; i < subset.size(); i++)
@@ -12,9 +13,10 @@ void generateSubsets(vector<int>& subset, int k, int n){
         }
         cout << endl;
     }else{
-        generateSubsets(subset, (k+1), n);
+        // recursive
+        generateSubsets((k+1), n);
         subset.push_back(k);
-        generateSubsets(subset, (k+1), n);
+        generateSubsets((k+1), n);
         subset.pop_back();
     }
 } 
@@ -26,7 +28,6 @@ int main(int argc, char const *argv[])
     cout << "Input [n]: ";
     cin >>n;
 
-    vector<int> subset;
-    generateSubsets(subset, 1, n);
+    generateSubsets( 1, n);
     return 0;
 }
