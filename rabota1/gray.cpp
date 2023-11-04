@@ -44,29 +44,47 @@ int binaryToDecimal(string binaryCode) {
 int main() {
     vector<string> grayCodes;
     int n;
-    cout << "Digite o número de códigos Gray: ";
-    cin >> n;
-    vector<int> grayCODE = generateGrayCode(n);
 
 
+    bool run = true;
+    while (run)
+    {
+        cout << "Digite o número de códigos Gray: ";
+        cin >> n;
+        vector<int> grayCODE = generateGrayCode(n);
 
-    //cout << "Digite os códigos Gray:" << endl;
-    string linha = "";
-    for (int code : grayCODE) {
-        for (int i =n-1; i >= 0; i--){
-            cout << ((code >> i) & 1)<<">";
-            linha = to_string((code >> i) & 1);
+        cout << "Gray code for "<<n<<"bits: "<<endl;
+
+        if (n > 0)
+        {
+            string linha = "";
+            for (int code : grayCODE) {
+                for (int i =n-1; i >= 0; i--){
+                    linha += to_string((code >> i) & 1);
+                }
+                cout <<endl;
+                grayCodes.push_back(linha);
+                linha = "";  
+            }
+
+            cout << "Códigos Binários e Valores Decimais:" << endl;
+            for (const string& grayCode : grayCodes) {
+                string binaryCode = grayToBinary(grayCode);
+                int decimalValue = binaryToDecimal(binaryCode);
+                cout << "Gray: " << grayCode << "  Binário: " << binaryCode << "  Decimal: " << decimalValue << endl;
+            }
+
+        }else{
+            cout <<"Just for bit > 0 "<<endl;
         }
-        cout <<endl;
-        grayCodes.push_back(linha);
+        string y;
+        cout << "Continue.. [y/n] ";
+        cin >> y;
+        if (y == "n")
+        {
+            run = false;
+        }
+        
     }
-
-    cout << "Códigos Binários e Valores Decimais:" << endl;
-    for (const string& grayCode : grayCodes) {
-        string binaryCode = grayToBinary(grayCode);
-        int decimalValue = binaryToDecimal(binaryCode);
-        cout << "Gray: " << grayCode << "  Binário: " << binaryCode << "  Decimal: " << decimalValue << endl;
-    }
-
     return 0;
 }
