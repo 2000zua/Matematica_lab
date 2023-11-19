@@ -49,7 +49,7 @@ int main() {
     bool run = true;
     while (run)
     {
-        cout << "Digite o número de códigos Gray: ";
+        cout << "Digite o número de interracao para o códigos Gray: ";
         cin >> n;
         vector<int> grayCODE = generateGrayCode(n);
 
@@ -71,7 +71,7 @@ int main() {
             for (const string& grayCode : grayCodes) {
                 string binaryCode = grayToBinary(grayCode);
                 int decimalValue = binaryToDecimal(binaryCode);
-                cout << "Gray: " << grayCode << "  Binário: " << binaryCode << "  Decimal: " << decimalValue << endl;
+                cout << "Gray:\t" << grayCode << "  \tBinário: \t" << binaryCode << "  \tDecimal: \t" << decimalValue << endl;
             }
 
         }else{

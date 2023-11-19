@@ -2,6 +2,7 @@
 #include <set>
 #include <algorithm>
 #include <iterator>
+#include <list>
 
 using namespace std;
 
@@ -49,6 +50,8 @@ void symmetricDifferenceOperation(const multiset<int>& set1, const multiset<int>
 }
 
 int main() {
+    list<int> conj = list<int>();
+    int controller;
     multiset<int> set1 = {1, 2, 5, 3, 4};
     multiset<int> set2 = {1, 3, 14, 9, 15};
 
