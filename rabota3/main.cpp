@@ -3,7 +3,6 @@
 #include <stack>
 
 using namespace std;
-
 class Graph{
     public:
         int V; 
@@ -57,22 +56,21 @@ void Graph::topologicalSort(){
 
 }
 
-
 int main()
 {
-    int n, m;
+    int a, b, n, opc;
+
     cout << "Введите количество элементов в множестве (n): ";
     cin >> n;
 
     Graph g(n);
 
     cout << "Введите пары a b, соответвующие неравенствам a < b: \n";
-    cin >>n>>m;
-    g.addEdge(n, m);
-
-
+    cin >>a>>b;
+    g.addEdge(a, b);
     cout << "Following is a Topological Sort of the given graph: ";
     g.topologicalSort();
+            
     return 0;
 }
 
