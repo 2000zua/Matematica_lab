@@ -1,76 +1,48 @@
+/**
+ * Trabalho de trabalho numero 2
+ * Alagaritimo de classificacao de topologia
+*/
+
 #include <iostream>
 #include <list>
 #include <stack>
+#include "Graph.h"
 
 using namespace std;
-class Graph{
-    public:
-        int V; 
-        Graph(int V);
-        list<int>* adj;
-        void tipologicalSortUtil(int v, bool visited[], stack<int>& Stack);
-        void addEdge(int v, int w);
-        void topologicalSort();
-    };
 
-Graph::Graph(int V)
-{
-    this->V = V;
-    adj = new list<int>[V];
-}
-
-void Graph::addEdge(int v, int w){
-    adj[v].push_back(w);
-}
-
-void Graph::tipologicalSortUtil(int v, bool visited[], stack<int>& Stack){
-    visited[v] = true;
-    list<int>::iterator i;
-    for ( i = adj[v].begin(); i != adj[v].end(); i++){
-        if (!visited[*i])
-        {
-            tipologicalSortUtil(*i, visited, Stack);
-        }
-    }
-    Stack.push(v);
-}
-
-void Graph::topologicalSort(){
-    stack<int> Stack;
-
-    bool* visited = new bool[V];
-    for (int i = 0; i < V; i++){
-        visited[i] = false;
-    }
-
-    for (int i = 0; i < V; i++){
-        if (visited[i] == false){
-            tipologicalSortUtil(i, visited, Stack);
-        }
-    }
-
-    while (Stack.empty() == false){
-        cout << Stack.top() << " ";
-        Stack.pop();
-    }
-
-}
 
 int main()
 {
-    int a, b, n, opc;
+    int a, b, n;
 
     cout << "Введите количество элементов в множестве (n): ";
     cin >> n;
-
     Graph g(n);
+    
+    cout << "Введите пары a b, соответвующие неравенствам  a < b.\n";
+    for (int i = 1; i <= n; i++)
+    {
+        cout << "["<<i<<"]: ";
+        cin >>a>>b;
+        g.adicionarAresta(b, a);
+    }
+    
+    vector<int> resultado = ordenacaoTopologica(g);
 
-    cout << "Введите пары a b, соответвующие неравенствам a < b: \n";
-    cin >>a>>b;
-    g.addEdge(a, b);
-    cout << "Following is a Topological Sort of the given graph: ";
-    g.topologicalSort();
-            
+    cout << "Ordenacao Topologiaca: \n";
+    /*
+    for (int i : resultado)
+    {
+        cout << i << " ";
+    }*/
+    for (int i = resultado.size() - 1; i >= 0; i--)
+    {
+       cout << resultado[i] << " ";
+    }
+    
+    cout << endl;
+    
+
     return 0;
 }
 
