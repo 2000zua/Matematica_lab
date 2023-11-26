@@ -17,8 +17,6 @@ int main()
         cin >>a>>b;
         g.addEdge(a, b);
     }
-    //Graph g(n);
-
 
     cout << "Following is a Topological Sort of the given graph: ";
     g.topologicalSort();
